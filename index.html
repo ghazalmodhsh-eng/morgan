@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مَرجان | مطعم المأكولات البحرية الفاخر</title>
+  <meta name="description" content="مَرجان — تجربة مأكولات بحرية فاخرة، صيد اليوم يصل إلى مائدتك من أعماق البحر مباشرة." />
+  <meta name="theme-color" content="#04121a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Reem+Kufi:wght@400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+</head>
+<body class="is-loading">
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__panel loader__panel--a"></div>
+    <div class="loader__panel loader__panel--b"></div>
+    <div class="loader__inner">
+      <span class="loader__eyebrow">MARJAN · SEAFOOD HOUSE</span>
+      <h2 class="loader__word" id="loaderWord">مَرجان</h2>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__count"><span id="loaderCount">0</span>%</div>
+    </div>
+  </div>
+
+  <!-- ============ CURSOR ============ -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div>
+  </div>
+
+  <!-- Menu hover image -->
+  <div class="hover-img" id="hoverImg" aria-hidden="true"><img src="" alt="" id="hoverImgEl" /></div>
+
+  <!-- Scroll progress -->
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- Grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <a href="#hero" class="logo" data-scroll>
+      <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 4c2 6 8 8 8 15 0 4-3 7-8 7s-8-3-8-7c0-7 6-9 8-15Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M24 26v18M24 34c-4-1-8-4-10-8M24 34c4-1 8-4 10-8M24 40c-3 0-6-2-8-4M24 40c3 0 6-2 8-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="logo__text">مَرجان</span>
+    </a>
+
+    <nav class="nav" aria-label="القائمة الرئيسية">
+      <a href="#about" data-scroll class="nav__link"><span>قصتنا</span></a>
+      <a href="#signature" data-scroll class="nav__link"><span>أطباق التوقيع</span></a>
+      <a href="#menu" data-scroll class="nav__link"><span>القائمة</span></a>
+      <a href="#chef" data-scroll class="nav__link"><span>الشيف</span></a>
+      <a href="#gallery" data-scroll class="nav__link"><span>المعرض</span></a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="#reserve" data-scroll class="btn btn--gold btn--sm magnetic"><span class="btn__text">احجز طاولة</span></a>
+      <button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen menu -->
+  <div class="overlay-menu" id="overlayMenu" aria-hidden="true">
+    <div class="overlay-menu__bg"></div>
+    <div class="overlay-menu__content">
+      <nav class="overlay-menu__nav">
+        <a href="#about" data-scroll class="om-link"><em>01</em><span>قصتنا</span></a>
+        <a href="#signature" data-scroll class="om-link"><em>02</em><span>أطباق التوقيع</span></a>
+        <a href="#menu" data-scroll class="om-link"><em>03</em><span>القائمة</span></a>
+        <a href="#chef" data-scroll class="om-link"><em>04</em><span>الشيف</span></a>
+        <a href="#gallery" data-scroll class="om-link"><em>05</em><span>المعرض</span></a>
+        <a href="#reserve" data-scroll class="om-link"><em>06</em><span>الحجز</span></a>
+      </nav>
+      <div class="overlay-menu__info om-fade">
+        <p>الكورنيش البحري، الإسكندرية</p>
+        <p dir="ltr">+20 100 123 4567</p>
+        <p>يومياً ١ ظهراً — ١ صباحاً</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
+          poster="https://images.pexels.com/videos/37259189/cinematic-crest-dark-deep-37259189.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=1920">
+          <source src="https://videos.pexels.com/video-files/37259189/15784119_1920_1080_24fps.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__shade"></div>
+      </div>
+      <canvas class="hero__bubbles" id="bubbles" aria-hidden="true"></canvas>
+
+      <div class="hero__content container">
+        <p class="hero__eyebrow reveal-up">
+          <span class="dot"></span> مطعم مأكولات بحرية فاخر — منذ ١٩٩٨
+        </p>
+        <h1 class="hero__title">
+          <span class="line"><span class="line__inner">من أعماق</span></span>
+          <span class="line"><span class="line__inner hero__title-gold">البحــر</span></span>
+          <span class="line"><span class="line__inner">إلى مائدتك</span></span>
+        </h1>
+        <p class="hero__lead reveal-up">
+          صيدٌ يصل كل فجر من قوارب الصيادين، يُطهى بشغف على يد أمهر الطهاة،
+          ويُقدَّم لك كقطعة فنية تحكي حكاية البحر.
+        </p>
+        <div class="hero__ctas reveal-up">
+          <a href="#reserve" data-scroll class="btn btn--gold magnetic"><span class="btn__text">احجز تجربتك</span>
+            <svg viewBox="0 0 24 24" class="btn__icon"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#menu" data-scroll class="btn btn--ghost magnetic"><span class="btn__text">استكشف القائمة</span></a>
+        </div>
+      </div>
+
+      <div class="hero__badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="hero__badge-ring">
+          <defs><path id="circlePath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text><textPath href="#circlePath" startOffset="0">FRESH CATCH · SINCE 1998 · MARJAN SEAFOOD · </textPath></text>
+        </svg>
+        <div class="hero__badge-core">
+          <svg viewBox="0 0 64 64"><path d="M6 32c10-12 26-16 40-8l12-8-4 16 4 16-12-8C32 48 16 44 6 32Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="18" cy="30" r="2" fill="currentColor"/></svg>
+        </div>
+      </div>
+
+      <div class="hero__catch reveal-up" aria-label="صيد اليوم">
+        <span class="hero__catch-label">صيد اليوم</span>
+        <strong>هامور أحمر · ٤.٢ كجم</strong>
+        <small>وصل الساعة ٥:٤٠ فجراً</small>
+      </div>
+
+      <div class="hero__bottom container">
+        <div class="hero__scroll">
+          <span class="hero__scroll-line"><i></i></span>
+          <span>مرّر للأسفل</span>
+        </div>
+        <div class="hero__meta">
+          <span>٣١.٢° N</span>
+          <span>٢٩.٩° E</span>
+          <span>الإسكندرية</span>
+        </div>
+      </div>
+
+      <svg class="hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path id="wavePath1" d="" />
+        <path id="wavePath2" d="" />
+      </svg>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-label="شعارات">
+      <div class="marquee__track" id="marqueeTrack">
+        <div class="marquee__group">
+          <span>صيد اليوم</span><i>✦</i>
+          <span class="outline">Fresh Catch</span><i>✦</i>
+          <span>لوبستر ملكي</span><i>✦</i>
+          <span class="outline">Oyster Bar</span><i>✦</i>
+          <span>مشويات على الفحم</span><i>✦</i>
+          <span class="outline">Since 1998</span><i>✦</i>
+        </div>
+        <div class="marquee__group" aria-hidden="true">
+          <span>صيد اليوم</span><i>✦</i>
+          <span class="outline">Fresh Catch</span><i>✦</i>
+          <span>لوبستر ملكي</span><i>✦</i>
+          <span class="outline">Oyster Bar</span><i>✦</i>
+          <span>مشويات على الفحم</span><i>✦</i>
+          <span class="outline">Since 1998</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about section" id="about">
+      <div class="container about__grid">
+        <div class="about__text">
+          <span class="eyebrow reveal-up">— قصتنا</span>
+          <p class="about__statement" id="aboutStatement">
+            بدأت حكايتنا على رصيف ميناء صغير، حيث كان جدّنا يستقبل قوارب الصيادين مع أول خيوط الفجر. اليوم، نحمل الإرث ذاته: احترامٌ للبحر، وشغفٌ بالنكهة، وإيمانٌ بأن أبسط المكونات تصنع أعظم الأطباق.
+          </p>
+          <div class="about__stats">
+            <div class="stat">
+              <strong><span class="count" data-count="27">0</span><sup>+</sup></strong>
+              <span>عاماً من الشغف</span>
+            </div>
+            <div class="stat">
+              <strong><span class="count" data-count="64">0</span></strong>
+              <span>طبقاً بحرياً</span>
+            </div>
+            <div class="stat">
+              <strong><span class="count" data-count="18">0</span></strong>
+              <span>قارب صيد شريك</span>
+            </div>
+            <div class="stat">
+              <strong><span class="count" data-count="4.9" data-decimals="1">0</span></strong>
+              <span>تقييم الضيوف</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__visual">
+          <div class="about__img about__img--main clip-reveal" data-cursor="مَرجان">
+            <img src="https://images.pexels.com/photos/10545412/pexels-photo-10545412.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="صالة مطعم مرجان المطلة على البحر" loading="lazy" />
+          </div>
+          <div class="about__img about__img--small clip-reveal">
+            <img src="https://images.pexels.com/photos/14786464/pexels-photo-14786464.jpeg?auto=compress&cs=tinysrgb&w=800" alt="مأكولات بحرية على الفحم" loading="lazy" />
+          </div>
+          <div class="about__seal" aria-hidden="true">
+            <span>EST.</span>
+            <strong>1998</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNATURE (horizontal) ============ -->
+    <section class="signature" id="signature">
+      <div class="signature__pin">
+        <div class="signature__head container">
+          <div>
+            <span class="eyebrow">— أطباق التوقيع</span>
+            <h2 class="section-title">ستّ تحف <em>من البحر</em></h2>
+          </div>
+          <div class="signature__progress"><span id="sigProgress"></span></div>
+        </div>
+
+        <div class="signature__track" id="sigTrack">
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/37976933/pexels-photo-37976933.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="لوبستر ملكي" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">01</span>
+              <h3>لوبستر ملكي بالزعفران</h3>
+              <p>لوبستر أطلسي كامل، زبدة الزعفران المحروقة، وكافيار الليمون.</p>
+              <span class="dish__price">٢٨٥٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/29380185/pexels-photo-29380185.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="هامور مشوي" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">02</span>
+              <h3>هامور على جمر السنديان</h3>
+              <p>فيليه هامور أحمر، صلصة الزبدة البيضاء، وخضار موسمية مشوية.</p>
+              <span class="dish__price">١٤٥٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/10375841/pexels-photo-10375841.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="محار طازج" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">03</span>
+              <h3>محار فين دي كلير</h3>
+              <p>ستّ محارات على الثلج المجروش، خل الشالوت، وليمون مدخّن.</p>
+              <span class="dish__price">٩٨٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/34759453/pexels-photo-34759453.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="تارتار السلمون" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">04</span>
+              <h3>تارتار السلمون والكافيار</h3>
+              <p>سلمون نرويجي مقطّع بالسكين، أفوكادو، وكافيار أوسيترا.</p>
+              <span class="dish__price">١١٢٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/30766455/pexels-photo-30766455.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="أخطبوط مشوي" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">05</span>
+              <h3>أخطبوط متوسطي مشوي</h3>
+              <p>أخطبوط مطهو ببطء ثم مشوي، بابريكا مدخنة وزيت زيتون بكر.</p>
+              <span class="dish__price">١٢٦٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <article class="dish" data-cursor="تذوّق">
+            <div class="dish__img"><img src="https://images.pexels.com/photos/566343/pexels-photo-566343.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="طبق مرجان للمشاركة" loading="lazy" /></div>
+            <div class="dish__body">
+              <span class="dish__num">06</span>
+              <h3>صينية مَرجان الكبرى</h3>
+              <p>لوبستر، جمبري جامبو، بلح البحر وكاليماري — للمشاركة بين ٤ أشخاص.</p>
+              <span class="dish__price">٤٢٠٠ <small>ج.م</small></span>
+            </div>
+          </article>
+          <div class="dish dish--end">
+            <p>كل طبق يُحضَّر عند الطلب<br/>من صيد الصباح نفسه.</p>
+            <a href="#menu" data-scroll class="btn btn--ghost magnetic"><span class="btn__text">القائمة الكاملة</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section class="menu section" id="menu">
+      <div class="container">
+        <div class="menu__head">
+          <span class="eyebrow reveal-up">— القائمة</span>
+          <h2 class="section-title split-title">نكهات <em>البحر</em> كما لم تتذوقها</h2>
+        </div>
+
+        <div class="menu__tabs" role="tablist">
+          <button class="menu__tab is-active" role="tab" aria-selected="true" data-tab="starters">المقبلات</button>
+          <button class="menu__tab" role="tab" aria-selected="false" data-tab="mains">الأطباق الرئيسية</button>
+          <button class="menu__tab" role="tab" aria-selected="false" data-tab="grill">من الفحم</button>
+          <button class="menu__tab" role="tab" aria-selected="false" data-tab="raw">بار المحار</button>
+          <span class="menu__tab-ind" id="tabInd"></span>
+        </div>
+
+        <div class="menu__panels">
+          <div class="menu__panel is-active" data-panel="starters" role="tabpanel">
+            <div class="menu-item" data-img="https://images.pexels.com/photos/36097868/pexels-photo-36097868.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>تارتار التونة الحمراء</h4><span class="menu-item__dots"></span><span class="menu-item__price">٦٥٠</span></div>
+              <p>تونة ذات الزعانف الصفراء، صلصة البونزو، وسمسم محمّص.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/4801427/pexels-photo-4801427.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>جمبري بالثوم الحار</h4><span class="menu-item__dots"></span><span class="menu-item__price">٥٢٠</span></div>
+              <p>جمبري أحمر في زيت الزيتون مع الثوم والفلفل الحار والبقدونس.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/28052916/pexels-photo-28052916.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>مخالب الكابوريا الذهبية</h4><span class="menu-item__dots"></span><span class="menu-item__price">٧٨٠</span></div>
+              <p>مخالب كابوريا مقرمشة مع مايونيز الليمون الأسود.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/36548092/pexels-photo-36548092.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>سيفيتشي القاروص</h4><span class="menu-item__dots"></span><span class="menu-item__price">٥٩٠</span></div>
+              <p>قاروص طازج منقوع في حليب النمر، مانجو وكزبرة.</p>
+            </div>
+          </div>
+
+          <div class="menu__panel" data-panel="mains" role="tabpanel">
+            <div class="menu-item" data-img="https://images.pexels.com/photos/37976929/pexels-photo-37976929.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>لوبستر ثيرميدور</h4><span class="menu-item__dots"></span><span class="menu-item__price">٢٤٠٠</span></div>
+              <p>نصف لوبستر مخبوز بصلصة الكونياك والجبن الغرويير.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/15059689/pexels-photo-15059689.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>فيليه القاروص بالليمون</h4><span class="menu-item__dots"></span><span class="menu-item__price">٩٥٠</span></div>
+              <p>قاروص محمّر، بطاطا مهروسة بالزبدة، وصلصة الكبر.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/31235404/pexels-photo-31235404.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>باستا فروتي دي ماري</h4><span class="menu-item__dots"></span><span class="menu-item__price">٨٤٠</span></div>
+              <p>لينغويني يدوية مع الجمبري والكاليماري وبلح البحر.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/19615772/pexels-photo-19615772.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>سمكة اليوم كاملة</h4><span class="menu-item__dots"></span><span class="menu-item__price">حسب الوزن</span></div>
+              <p>اختر سمكتك من ركن الصيد، ونطهوها بالطريقة التي تحبها.</p>
+            </div>
+          </div>
+
+          <div class="menu__panel" data-panel="grill" role="tabpanel">
+            <div class="menu-item" data-img="https://images.pexels.com/photos/14786464/pexels-photo-14786464.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>جمبري جامبو مشوي</h4><span class="menu-item__dots"></span><span class="menu-item__price">١١٠٠</span></div>
+              <p>جمبري جامبو متبّل بالأعشاب، يُشوى على جمر السنديان.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/29380181/pexels-photo-29380181.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>سلطان إبراهيم على الفحم</h4><span class="menu-item__dots"></span><span class="menu-item__price">٧٢٠</span></div>
+              <p>سمك سلطان إبراهيم مع صلصة الطحينة والسماق.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/30766455/pexels-photo-30766455.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>سبيط محشي مشوي</h4><span class="menu-item__dots"></span><span class="menu-item__price">٦٨٠</span></div>
+              <p>سبيط محشو بالأرز البري والأعشاب، مع صلصة الليمون.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/13772595/pexels-photo-13772595.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>سيخ مَرجان المشكّل</h4><span class="menu-item__dots"></span><span class="menu-item__price">١٣٥٠</span></div>
+              <p>تشكيلة من السمك والجمبري والكاليماري المشوي مع الهليون.</p>
+            </div>
+          </div>
+
+          <div class="menu__panel" data-panel="raw" role="tabpanel">
+            <div class="menu-item" data-img="https://images.pexels.com/photos/10375841/pexels-photo-10375841.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>محار فين دي كلير (٦ قطع)</h4><span class="menu-item__dots"></span><span class="menu-item__price">٩٨٠</span></div>
+              <p>على الثلج المجروش مع خل الشالوت والليمون.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/37924305/pexels-photo-37924305.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>تشكيلة الساشيمي</h4><span class="menu-item__dots"></span><span class="menu-item__price">١٢٠٠</span></div>
+              <p>سلمون، تونة، وقاروص مع الوسابي الطازج.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/18136135/pexels-photo-18136135.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>برج المحار والشمبانيا</h4><span class="menu-item__dots"></span><span class="menu-item__price">٣٦٠٠</span></div>
+              <p>١٢ محارة، جمبري بارد، وزجاجة مشروب فوّار فاخر.</p>
+            </div>
+            <div class="menu-item" data-img="https://images.pexels.com/photos/15497534/pexels-photo-15497534.jpeg?auto=compress&cs=tinysrgb&w=600">
+              <div class="menu-item__row"><h4>كارباتشيو الإسكالوب</h4><span class="menu-item__dots"></span><span class="menu-item__price">٨٩٠</span></div>
+              <p>إسكالوب هوكايدو، زيت الكمأة، وزهور صالحة للأكل.</p>
+            </div>
+          </div>
+        </div>
+        <p class="menu__note reveal-up">جميع الأسعار بالجنيه المصري وتشمل ضريبة القيمة المضافة. يرجى إبلاغنا بأي حساسية غذائية.</p>
+      </div>
+    </section>
+
+    <!-- ============ CHEF ============ -->
+    <section class="chef section" id="chef">
+      <div class="container chef__grid">
+        <div class="chef__visual">
+          <div class="chef__img clip-reveal" data-cursor="الشيف">
+            <img src="https://images.pexels.com/photos/19692020/pexels-photo-19692020.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="الشيف أثناء الطهي" loading="lazy" />
+          </div>
+          <span class="chef__vertical" aria-hidden="true">CHEF DE CUISINE</span>
+        </div>
+        <div class="chef__text">
+          <span class="eyebrow reveal-up">— الشيف التنفيذي</span>
+          <h2 class="section-title split-title">يوسف <em>البحيري</em></h2>
+          <blockquote class="chef__quote reveal-up">
+            «البحر لا يحتاج إلى من يجمّله، بل إلى من يُنصت إليه. مهمتي أن أترك السمكة تحكي قصتها، وأن أضيف فقط ما يجعل صوتها أوضح.»
+          </blockquote>
+          <p class="chef__bio reveal-up">
+            ثلاثون عاماً بين مطابخ مرسيليا وطوكيو وسان سيباستيان، عاد بعدها يوسف إلى مدينته ليصنع مطبخاً يحتفي بالبحر المتوسط بلغة عالمية.
+          </p>
+          <div class="chef__awards reveal-up">
+            <div><strong>٣</strong><span>جوائز دولية</span></div>
+            <div><strong>٣٠</strong><span>عاماً من الخبرة</span></div>
+            <div><strong>١٢</strong><span>مطبخاً حول العالم</span></div>
+          </div>
+          <svg class="chef__signature" viewBox="0 0 300 80" aria-hidden="true">
+            <path id="sigPath" d="M10 55 C 30 10, 50 10, 55 45 S 70 70, 85 40 S 110 15, 120 50 C 125 65, 140 60, 150 35 C 158 20, 170 25, 168 45 C 166 60, 185 62, 200 40 C 215 20, 230 30, 228 50 C 226 62, 250 60, 290 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUOTE BAND ============ -->
+    <section class="band" aria-label="فلسفتنا">
+      <div class="band__bg"><img src="https://images.pexels.com/photos/29819761/pexels-photo-29819761.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" loading="lazy" /></div>
+      <div class="band__content container">
+        <p class="band__text" id="bandText">طازجٌ كالموجة الأولى، عميقٌ كالبحر نفسه.</p>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <div class="gallery__head">
+          <span class="eyebrow reveal-up">— المعرض</span>
+          <h2 class="section-title split-title">لحظات <em>على المائدة</em></h2>
+        </div>
+        <div class="gallery__grid">
+          <div class="gallery__col" data-speed="-60">
+            <figure class="g-item tall" data-cursor="عرض"><img src="https://images.pexels.com/photos/36430025/pexels-photo-36430025.jpeg?auto=compress&cs=tinysrgb&w=800" alt="الشيف في المطبخ" loading="lazy" /></figure>
+            <figure class="g-item" data-cursor="عرض"><img src="https://images.pexels.com/photos/18136134/pexels-photo-18136134.jpeg?auto=compress&cs=tinysrgb&w=800" alt="محار وشمبانيا" loading="lazy" /></figure>
+          </div>
+          <div class="gallery__col" data-speed="60">
+            <figure class="g-item" data-cursor="عرض"><img src="https://images.pexels.com/photos/4344429/pexels-photo-4344429.jpeg?auto=compress&cs=tinysrgb&w=800" alt="عشاء فاخر" loading="lazy" /></figure>
+            <figure class="g-item tall" data-cursor="عرض"><img src="https://images.pexels.com/photos/29472094/pexels-photo-29472094.jpeg?auto=compress&cs=tinysrgb&w=800" alt="غروب على البحر" loading="lazy" /></figure>
+          </div>
+          <div class="gallery__col" data-speed="-30">
+            <figure class="g-item tall" data-cursor="عرض"><img src="https://images.pexels.com/photos/37976929/pexels-photo-37976929.jpeg?auto=compress&cs=tinysrgb&w=800" alt="لوبستر على الثلج" loading="lazy" /></figure>
+            <figure class="g-item" data-cursor="عرض"><img src="https://images.pexels.com/photos/19615775/pexels-photo-19615775.jpeg?auto=compress&cs=tinysrgb&w=800" alt="طبق سمك" loading="lazy" /></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="testi section" id="testimonials">
+      <div class="container">
+        <span class="eyebrow reveal-up">— كلمات ضيوفنا</span>
+        <div class="testi__wrap">
+          <svg class="testi__mark" viewBox="0 0 64 48" aria-hidden="true"><path d="M0 48V28C0 12 8 2 24 0l2 6C16 9 12 15 12 24h12v24H0Zm38 0V28C38 12 46 2 62 0l2 6c-10 3-14 9-14 18h12v24H38Z" fill="currentColor"/></svg>
+          <div class="testi__slides" id="testiSlides">
+            <figure class="testi__slide is-active">
+              <blockquote>أفضل لوبستر تذوقته في حياتي. الأجواء، الخدمة، والإطلالة على البحر — كل شيء كان أشبه بحلم.</blockquote>
+              <figcaption><strong>ليلى منصور</strong><span>ناقدة طعام — القاهرة</span></figcaption>
+            </figure>
+            <figure class="testi__slide">
+              <blockquote>مرجان ليس مطعماً، إنه تجربة. كل طبق يصل كأنه لوحة فنية، والنكهات تبقى في الذاكرة طويلاً.</blockquote>
+              <figcaption><strong>كريم الشريف</strong><span>ضيف دائم منذ ٢٠١٠</span></figcaption>
+            </figure>
+            <figure class="testi__slide">
+              <blockquote>احتفلنا بذكرى زواجنا هنا، واهتمام الفريق بأدق التفاصيل جعل الليلة لا تُنسى. برج المحار تحفة.</blockquote>
+              <figcaption><strong>سارة وأحمد</strong><span>الإسكندرية</span></figcaption>
+            </figure>
+            <figure class="testi__slide">
+              <blockquote>طزاجة لا تُصدق. تشعر أن السمك خرج من البحر قبل دقائق. الشيف يوسف فنان حقيقي.</blockquote>
+              <figcaption><strong>مارك دوبوا</strong><span>شيف — باريس</span></figcaption>
+            </figure>
+          </div>
+          <div class="testi__nav">
+            <button class="testi__btn magnetic" id="testiPrev" aria-label="السابق">
+              <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="testi__count"><span id="testiCur">01</span> / <span id="testiTotal">04</span></div>
+            <button class="testi__btn magnetic" id="testiNext" aria-label="التالي">
+              <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESERVATION ============ -->
+    <section class="reserve section" id="reserve">
+      <div class="reserve__bg"><img src="https://images.pexels.com/photos/8093686/pexels-photo-8093686.png?auto=compress&cs=tinysrgb&w=1920" alt="" loading="lazy" /></div>
+      <div class="container reserve__grid">
+        <div class="reserve__info">
+          <span class="eyebrow reveal-up">— الحجز</span>
+          <h2 class="section-title split-title">احجز <em>طاولتك</em> على البحر</h2>
+          <p class="reveal-up">نستقبل الحجوزات حتى ٣٠ يوماً مقدماً. للمجموعات التي تزيد عن ١٠ أشخاص أو المناسبات الخاصة، يسعدنا تواصلك المباشر معنا.</p>
+          <ul class="reserve__list reveal-up">
+            <li><span>العنوان</span><strong>الكورنيش البحري، الإسكندرية</strong></li>
+            <li><span>الهاتف</span><strong dir="ltr">+20 100 123 4567</strong></li>
+            <li><span>المواعيد</span><strong>يومياً من ١ ظهراً حتى ١ صباحاً</strong></li>
+          </ul>
+        </div>
+
+        <form class="reserve__form" id="reserveForm" novalidate>
+          <div class="field">
+            <input type="text" id="fName" name="name" placeholder=" " autocomplete="name" required />
+            <label for="fName">الاسم الكامل</label>
+            <span class="field__line"></span>
+            <small class="field__err">من فضلك أدخل اسمك</small>
+          </div>
+          <div class="field">
+            <input type="tel" id="fPhone" name="phone" placeholder=" " autocomplete="tel" dir="ltr" required />
+            <label for="fPhone">رقم الهاتف</label>
+            <span class="field__line"></span>
+            <small class="field__err">أدخل رقم هاتف صحيح</small>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <input type="date" id="fDate" name="date" required />
+              <label for="fDate" class="is-fixed">التاريخ</label>
+              <span class="field__line"></span>
+              <small class="field__err">اختر تاريخاً</small>
+            </div>
+            <div class="field">
+              <select id="fTime" name="time" required>
+                <option value="" disabled selected></option>
+                <option>١:٠٠ ظهراً</option>
+                <option>٣:٠٠ عصراً</option>
+                <option>٥:٠٠ مساءً</option>
+                <option>٧:٠٠ مساءً</option>
+                <option>٨:٣٠ مساءً</option>
+                <option>١٠:٠٠ مساءً</option>
+                <option>١١:٣٠ مساءً</option>
+              </select>
+              <label for="fTime" class="is-fixed">الوقت</label>
+              <span class="field__line"></span>
+              <small class="field__err">اختر وقتاً</small>
+            </div>
+          </div>
+          <div class="field field--guests">
+            <span class="field__label">عدد الضيوف</span>
+            <div class="guests">
+              <button type="button" class="guests__btn" id="gMinus" aria-label="إنقاص">−</button>
+              <output id="gCount">2</output>
+              <button type="button" class="guests__btn" id="gPlus" aria-label="زيادة">+</button>
+            </div>
+          </div>
+          <div class="field">
+            <textarea id="fNotes" name="notes" rows="2" placeholder=" "></textarea>
+            <label for="fNotes">ملاحظات أو مناسبة خاصة (اختياري)</label>
+            <span class="field__line"></span>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full magnetic" id="submitBtn">
+            <span class="btn__text">تأكيد الحجز</span>
+            <svg viewBox="0 0 24 24" class="btn__icon"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Success modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__card">
+      <svg class="modal__check" viewBox="0 0 80 80" aria-hidden="true">
+        <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2" id="checkCircle"/>
+        <path d="M25 41l10 10 20-22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" id="checkMark"/>
+      </svg>
+      <h3 id="modalTitle">تم استلام حجزك</h3>
+      <p id="modalText">سنتواصل معك قريباً لتأكيد التفاصيل.</p>
+      <button class="btn btn--gold btn--sm" data-close><span class="btn__text">رائع، شكراً</span></button>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__col">
+          <h5>زورونا</h5>
+          <p>الكورنيش البحري، رشدي<br/>الإسكندرية، مصر</p>
+        </div>
+        <div class="footer__col">
+          <h5>المواعيد</h5>
+          <p>السبت — الخميس: ١ م — ١ ص<br/>الجمعة: ٢ م — ٢ ص</p>
+        </div>
+        <div class="footer__col">
+          <h5>تواصل</h5>
+          <p><a href="tel:+201001234567" dir="ltr">+20 100 123 4567</a><br/><a href="mailto:hello@marjan.sea">hello@marjan.sea</a></p>
+        </div>
+        <div class="footer__col footer__news">
+          <h5>النشرة البحرية</h5>
+          <form class="news" id="newsForm" novalidate>
+            <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني" id="newsEmail" dir="auto" required />
+            <button type="submit" aria-label="اشتراك">
+              <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+          <small class="news__msg" id="newsMsg"></small>
+        </div>
+      </div>
+
+      <div class="footer__giant" aria-hidden="true">
+        <span id="footerGiant">مَرجان</span>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> مَرجان للمأكولات البحرية. جميع الحقوق محفوظة.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="إنستغرام" class="magnetic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="فيسبوك" class="magnetic"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
+          <a href="#" aria-label="تيك توك" class="magnetic"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        </div>
+        <div id="sourceDownload" hidden>
+          <button type="button" class="footer__top-btn">تنزيل ملفات الموقع (ZIP)</button>
+          <small class="footer__download-status" role="status"></small>
+        </div>
+        <a href="#hero" data-scroll class="footer__top-btn">العودة للأعلى ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    if (import.meta.env?.DEV || import.meta.env?.PROD) {
+      import("./script.js").then(() => {
+        document.dispatchEvent(new CustomEvent("marjan:sources", {
+          detail: async () => {
+            const [html, css, js] = await Promise.all([
+              import("./index.html?raw"),
+              import("./style.css?raw"),
+              import("./script.js?raw")
+            ]);
+            return { "index.html": html.default, "style.css": css.default, "script.js": js.default };
+          }
+        }));
+      });
+    } else {
+      // A classic script can also load when index.html is opened from disk.
+      const script = document.createElement("script");
+      script.src = "./script.js";
+      document.head.append(script);
+    }
+  </script>
+</body>
+</html>
